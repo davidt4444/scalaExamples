@@ -12,7 +12,9 @@ https://x.com/i/grok?conversation=1884828555973976255
 basic-content-service
 ---------------
 sbt new playframework/play-scala-seed.g8
-cd basic-content-service
+The app base is com.ads.bcs.app where ads is the company,
+bcs is the project, and app is where the source is 
+cd bcs
 sbt run
 As you add in the packages, for e.g. akka 
 the repos are here https://repo1.maven.org/maven2/com/typesafe/akka/
@@ -25,6 +27,8 @@ The transitions from examples are below:
 //"com.typesafe.play" %% "play-json" % "2.9.2" >> "org.playframework" %% "play-json" % "3.1.0-M1",
 
 There are controllers. PostJsonSupport is for the serializing.
+A lot of tutorials and generated code will try to get you to put the routes in the controller.
+Those are located in the conf/routes file
 Models are self explanatory.
 Rather than use application.conf, I used url to keep sensitive stuff separate from the project.
 The value is usually a connection string like
