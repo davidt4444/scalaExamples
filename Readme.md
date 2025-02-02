@@ -35,3 +35,14 @@ The value is usually a connection string like
 jdbc:mysql://user:password@localhost:3306/project_database?useSSL=false
 References to functions in the repository are done in the service, which are called in the controller
 
+------------
+3.3.5 changes
+
+https://stackoverflow.com/questions/41179532/when-overloading-apply-method-slick-error-message-value-tupled-is-not-a-memb
+mapperto function in Post
+No apply function needed. It is handled in postjsonsupport
+For tupple in PostRepository
+(Post.tupled, Post.unapply)
+becomes
+((Post.mapperTo _).tupled, Post.unapply)
+

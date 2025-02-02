@@ -16,3 +16,32 @@ case class Post(
                  isPublished: Boolean,
                  views: Int = 0
                )
+
+object Post {
+
+  def mapperTo(
+                id: Option[Int],
+                title: String,
+                content: String,
+                createdAt: Instant,
+                author: Option[String],
+                category: Option[String],
+                updatedAt: Option[Instant],
+                likesCount: Int,
+                authorId: Option[Int],
+                isPublished: Boolean,
+                views: Int
+              ) = apply(id,
+    title,
+    content,
+    createdAt,
+    author,
+    category,
+    updatedAt,
+    likesCount,
+    authorId,
+    isPublished,
+    views
+  )
+
+}

@@ -24,7 +24,7 @@ class PostRepository @Inject()()(implicit ec: ExecutionContext) {
     def isPublished = column[Boolean]("isPublished")
     def views = column[Int]("views")
 
-    def * = (id.?, title, content, createdAt, author, category, updatedAt, likesCount, authorId, isPublished, views) <> (Post.tupled, Post.unapply)
+    def * = (id.?, title, content, createdAt, author, category, updatedAt, likesCount, authorId, isPublished, views) <> ((Post.mapperTo _).tupled, Post.unapply)
   }
   private val posts = TableQuery[PostTable]
 
