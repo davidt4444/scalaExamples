@@ -1,10 +1,10 @@
-# postprocesskafka setup
+# postproducerkafka setup
 
 To look for commonly used dependencies
 https://github.com/confluentinc/examples
 
 sbt new scala/scala3.g8
-Name: PostProcessKafka
+Name: PostProducerKafka
 
 https://x.com/i/grok/share/epcaVMC8P95tNVyl2OgZtZ8b4
 https://x.com/i/grok?conversation=1886195281915470194
