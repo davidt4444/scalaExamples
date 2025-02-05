@@ -9,10 +9,11 @@ import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class PostService @Inject()(postRepository: PostRepository)(implicit ec: ExecutionContext) {
-  import java.time.LocalDateTime;
+  import java.time.Instant;
+  import java.sql.Timestamp;
 
   def createPost(post: Post): Future[Post] = {
-    val newPost = post.copy(createdAt = LocalDateTime.now()) // Ensure createdAt is set
+    val newPost = post.copy(createdAt = Timestamp.from(Instant.now())) // Ensure createdAt is set
     postRepository.insert(newPost).map(_ => newPost.copy(id = Some(0))) // Placeholder for DB-generated ID
   }
 
@@ -21,7 +22,7 @@ class PostService @Inject()(postRepository: PostRepository)(implicit ec: Executi
   def findPostById(id: Long): Future[Option[Post]] = postRepository.findById(id.toInt)
 
   def updatePost(id: Long, updatedPost: Post): Future[Option[Post]] = {
-    val postWithTimestamp = updatedPost.copy(updatedAt = Some(LocalDateTime.now()))
+    val postWithTimestamp = updatedPost.copy(updatedAt = Some(Timestamp.from(Instant.now())))
     postRepository.update(id.toInt, postWithTimestamp).flatMap {
       case true => postRepository.findById(id.toInt) // Return updated post if update was successful
       case false => Future.successful(None) // Return None if update failed

@@ -5,7 +5,8 @@ import javax.inject._
 import com.ads.bcs.app.models.Post
 import slick.jdbc.MySQLProfile.api._
 //import play.api.db.slick.DatabaseConfigProvider
-import java.time.LocalDateTime;
+import java.time.Instant;
+import java.sql.Timestamp;
 import scala.concurrent.{ExecutionContext, Future}
 import com.typesafe.config.ConfigFactory
 
@@ -15,16 +16,16 @@ class PostRepository @Inject()()(implicit ec: ExecutionContext) {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
     def title = column[String]("title")
     def content = column[String]("content")
-    def createdAt = column[LocalDateTime]("createdAt")
+    def createdAt = column[Timestamp]("createdAt")
     def author = column[Option[String]]("author")
     def category = column[Option[String]]("category")
-    def updatedAt = column[Option[LocalDateTime]]("updatedAt")
+    def updatedAt = column[Option[Timestamp]]("updatedAt")
     def likesCount = column[Int]("likesCount")
     def authorId = column[Option[Int]]("authorId")
     def isPublished = column[Boolean]("isPublished")
     def views = column[Int]("views")
 
-    def * = (id.?, title, content, createdAt, author, category, updatedAt, likesCount, authorId, isPublished, views) <> ((Post.mapperTo _).tupled, Post.unapply)
+    def * = (id.?, title, content, createdAt, author, category, updatedAt, likesCount, authorId, isPublished, views) <> ((Post.mapperTo ).tupled, Post.unapply)
   }
   private val posts = TableQuery[PostTable]
 
