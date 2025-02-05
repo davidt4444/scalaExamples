@@ -1,16 +1,16 @@
 // /bcs/app/models/Post.scala
 package com.ads.bcs.app.models
 
-import java.time.Instant
+import java.time.LocalDateTime;
 
 case class Post(
                  id: Option[Int] = None,
                  title: String,
                  content: String,
-                 createdAt: Instant,
+                 createdAt: LocalDateTime,
                  author: Option[String] = None,
                  category: Option[String] = None,
-                 updatedAt: Option[Instant] = None,
+                 updatedAt: Option[LocalDateTime] = None,
                  likesCount: Int = 0,
                  authorId: Option[Int] = None,
                  isPublished: Boolean,
@@ -23,10 +23,10 @@ object Post {
                 id: Option[Int],
                 title: String,
                 content: String,
-                createdAt: Instant,
+                createdAt: LocalDateTime,
                 author: Option[String],
                 category: Option[String],
-                updatedAt: Option[Instant],
+                updatedAt: Option[LocalDateTime],
                 likesCount: Int,
                 authorId: Option[Int],
                 isPublished: Boolean,

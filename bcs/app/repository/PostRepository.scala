@@ -5,7 +5,7 @@ import javax.inject._
 import com.ads.bcs.app.models.Post
 import slick.jdbc.MySQLProfile.api._
 //import play.api.db.slick.DatabaseConfigProvider
-import java.time.Instant
+import java.time.LocalDateTime;
 import scala.concurrent.{ExecutionContext, Future}
 import com.typesafe.config.ConfigFactory
 
@@ -15,10 +15,10 @@ class PostRepository @Inject()()(implicit ec: ExecutionContext) {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
     def title = column[String]("title")
     def content = column[String]("content")
-    def createdAt = column[Instant]("createdAt")
+    def createdAt = column[LocalDateTime]("createdAt")
     def author = column[Option[String]]("author")
     def category = column[Option[String]]("category")
-    def updatedAt = column[Option[Instant]]("updatedAt")
+    def updatedAt = column[Option[LocalDateTime]]("updatedAt")
     def likesCount = column[Int]("likesCount")
     def authorId = column[Option[Int]]("authorId")
     def isPublished = column[Boolean]("isPublished")
