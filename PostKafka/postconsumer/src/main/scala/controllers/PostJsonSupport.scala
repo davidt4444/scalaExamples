@@ -1,7 +1,7 @@
 // /postproducer/src/controllers/PostJsonSupport.scala
-package com.ads.bcs.app.controllers
+package com.ads.postconsumer.controllers
 
-import com.ads.bcs.app.models.Post
+import com.ads.postconsumer.models.Post
 import play.api.libs.json._
 import play.api.libs.functional.syntax._
 import java.time.Instant
