@@ -60,7 +60,7 @@ Ensure you have the necessary dependencies for Apache Spark, MySQL JDBC driver, 
 
 scala
 
-name := "SparkBlogPostMapper"
+name := "SparkPostMapper"
 
 version := "0.1"
 

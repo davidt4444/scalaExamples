@@ -3,8 +3,8 @@
 ### Usage
 
 sbt new scala/scala3.g8
-SparkBlogPostMapper
-cd sparkblogpostmapper 
+SparkPostMapper
+cd sparkpostmapper 
 
 Add in code
 https://x.com/i/grok/share/GIucFS0z6rakHQIoSbl9r3UPm
