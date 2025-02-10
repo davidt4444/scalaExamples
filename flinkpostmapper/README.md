@@ -8,6 +8,10 @@ cd flinkpostmapper
 
 Those repos are here https://repo1.maven.org/maven2/com/typesafe/akka/
 
+The Grok conversations are here 
+https://x.com/i/grok/share/ksPZZCfc5uNXSFcwHBNULY3kv
+https://x.com/i/grok?conversation=1888439841144094900
+
 Relative paths from the project do not work for the execution of flink, since the jar file is submitted via script, so remember to define the 
 com.ads.flinkpostmapper.FlinkConstants.project_sub_dir 
 variable with the path of the sub directory containing the projects. This way you can get an output for debugging and you can access the connection strings contained in resource projects.
