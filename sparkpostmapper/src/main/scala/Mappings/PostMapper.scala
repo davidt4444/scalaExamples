@@ -10,7 +10,6 @@ import java.time.LocalDateTime
 import org.apache.spark.sql.{Encoder, Row}
 
 class PostMapper (){
-
   def postToJpost(): Unit = {
     // Create Spark session
     //val spark = SparkSession.builder()
@@ -134,7 +133,39 @@ class PostMapper (){
       //.option("password", "")
       .load()
 
-    // Map to case class Post
+    val postsDF = jdbcDF.map { row =>
+      
+      // If rebuilding 
+      // val id = Option(row.getAs[Long]("id")) // Convert Long to Int for id
+      //else add new data without old id
+      val id = null
+      val title = row.getAs[String]("title")
+      val content = row.getAs[String]("content")
+      val createdAt = row.getAs[Timestamp]("createdAt")
+      val author = Option(row.getAs[String]("author"))
+      val category = Option(row.getAs[String]("category"))
+      val updatedAt = Option(row.getAs[Timestamp]("updatedAt"))
+      val likesCount = row.getAs[Int]("likesCount")
+      val authorId = Option(row.getAs[Int]("authorId"))
+      val isPublished = row.getAs[Boolean]("isPublished")
+      val views = row.getAs[Int]("views")
+      new Post(
+        id,
+        title,
+        content,
+        createdAt,
+        author,
+        category,
+        updatedAt,
+        likesCount,
+        authorId,
+        isPublished,
+        views
+      )
+    }
+    // You can also map to case class Post
+    // in the data frame like the example below
+    /*
     val postsDF = jdbcDF.select(
       $"id".cast(LongType).as[Option[Long]],
       $"title".as[String],
@@ -148,7 +179,7 @@ class PostMapper (){
       $"isPublished".as[Boolean],
       $"views".as[Int]
     ).as[Post]
-
+    */
     // Write the transformed data to MySQL "post" table
     postsDF.write
       .format("jdbc")
