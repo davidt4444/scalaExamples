@@ -14,6 +14,7 @@ class PostRepository @Inject()()(implicit ec: ExecutionContext) {
 
   private class PostTable(tag: Tag) extends Table[Post](tag, "Post") {
     def id = column[Int]("id", O.PrimaryKey, O.AutoInc)
+    def uniqueId = column[String]("uniqueId")
     def title = column[String]("title")
     def content = column[String]("content")
     def createdAt = column[Timestamp]("createdAt")
@@ -25,7 +26,7 @@ class PostRepository @Inject()()(implicit ec: ExecutionContext) {
     def isPublished = column[Boolean]("isPublished")
     def views = column[Int]("views")
 
-    def * = (id.?, title, content, createdAt, author, category, updatedAt, likesCount, authorId, isPublished, views) <> ((Post.mapperTo ).tupled, Post.unapply)
+    def * = (id.?, uniqueId.?, title, content, createdAt, author, category, updatedAt, likesCount, authorId, isPublished, views) <> ((Post.mapperTo ).tupled, Post.unapply)
   }
   private val posts = TableQuery[PostTable]
 

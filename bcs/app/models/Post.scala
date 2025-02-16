@@ -6,6 +6,7 @@ import java.sql.Timestamp;
 
 case class Post(
                  id: Option[Int] = None,
+                 uniqueId: Option[String]=None,
                  title: String,
                  content: String,
                  createdAt: Timestamp,
@@ -22,6 +23,7 @@ object Post {
 
   def mapperTo(
                 id: Option[Int],
+                uniqueId: Option[String],
                 title: String,
                 content: String,
                 createdAt: Timestamp,
@@ -33,6 +35,7 @@ object Post {
                 isPublished: Boolean,
                 views: Int
               ) = apply(id,
+    uniqueId,
     title,
     content,
     createdAt,

@@ -27,6 +27,7 @@ object PostJsonSupport {
 
   implicit val postReads: Reads[Post] = (
     (JsPath \ "id").readNullable[Int] and
+      (JsPath \ "uniqueId").readNullable[String] and
       (JsPath \ "title").read[String].filter(JsonValidationError("Title must be between 5 and 200 characters"))(title => title.length >= 5 && title.length <= 200) and
       (JsPath \ "content").read[String].filter(JsonValidationError("Content must be between 0 and 10000 characters"))(content => content.length >= 0 && content.length <= 10000) and
       (JsPath \ "createdAt").read[Timestamp] and
