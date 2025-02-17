@@ -39,6 +39,7 @@ class PostMigration {
       .load()
       .select(
         col("id"),
+        col("uniqueId"),
         col("title"),
         col("author"),
         col("date").as("createdAt"),

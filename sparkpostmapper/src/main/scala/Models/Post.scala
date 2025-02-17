@@ -3,6 +3,7 @@ import java.sql.Timestamp
 
   case class Post(
     id: Option[Long] = None,
+    uniqueId: String,
     title: String,
     content: String,
     createdAt: Timestamp,

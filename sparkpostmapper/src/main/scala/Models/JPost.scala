@@ -3,6 +3,7 @@ import java.time.LocalDateTime
 
 case class JPost(
   id: Option[Integer] = None,
+  uniqueId: String,
   title: String,
   content: String,
   createdAt: LocalDateTime,

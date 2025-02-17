@@ -26,6 +26,7 @@ class PostMapper (){
     // Define schema for Post table
     val postSchema = StructType(Seq(
       StructField("id", IntegerType, nullable = true),
+      StructField("uniqueId", StringType, nullable = false),
       StructField("title", StringType, nullable = false),
       StructField("content", StringType, nullable = false),
       StructField("createdAt", TimestampType, nullable = false),
@@ -64,6 +65,7 @@ class PostMapper (){
 
       new JPost(
         id,
+        row.getAs[String]("uniqueId"),
         row.getAs[String]("title"),
         row.getAs[String]("content"),
         createdAt,
@@ -139,6 +141,7 @@ class PostMapper (){
       // val id = Option(row.getAs[Long]("id")) // Convert Long to Int for id
       //else add new data without old id
       val id = null
+      val uniqueId = row.getAs[String]("uniqueId")
       val title = row.getAs[String]("title")
       val content = row.getAs[String]("content")
       val createdAt = row.getAs[Timestamp]("createdAt")
@@ -151,6 +154,7 @@ class PostMapper (){
       val views = row.getAs[Int]("views")
       new Post(
         id,
+        uniqueId,
         title,
         content,
         createdAt,
